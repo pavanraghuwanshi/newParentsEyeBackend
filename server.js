@@ -6,6 +6,7 @@ import { fetchGPSdata } from "./Utils/LiveDataFromOldApp/fetchGPSdata.js";
 import {dbConnections} from "./Database/db.js";
 import historyRoute from "./Routes/deviceHistory.route.js";
 import reportRoute from "./Routes/reports.route.js";
+import schoolRoute from "./Routes/school.route.js";
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -35,6 +36,7 @@ app.get("/", (req, res) => {
 // Use routes
 app.use("/history", historyRoute)
 app.use("/reports", reportRoute)
+app.use("/api", schoolRoute);
 
 // const io = setupSocket(server);
 
@@ -45,7 +47,7 @@ app.use("/reports", reportRoute)
 // }, 10000); 
 
 setInterval(() => {
-    fetchGPSdata();
+    // fetchGPSdata();
 }, 10000);
 
 

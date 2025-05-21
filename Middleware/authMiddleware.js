@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import  Superadmin  from '../Models/superAdmin.js';
-import  School  from '../Models/school.js';
+import  {School}  from '../Models/school.js';
 import Branch from '../Models/branch.js';
 import mongoose from 'mongoose';
 

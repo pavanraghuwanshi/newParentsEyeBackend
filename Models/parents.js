@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import  {dbConnections}  from "../Database/db.js"; 
 
 // Define the schema for the School model
-const schoolSchema = new mongoose.Schema({
+const ParentSchema = new mongoose.Schema({
   schoolName: {
     type: String,
     required: true
@@ -45,4 +45,4 @@ const schoolSchema = new mongoose.Schema({
 // };
 
 
-export const School = dbConnections.db2.model("School", schoolSchema);
+export default dbConnections.db1.model('Parent', ParentSchema);
