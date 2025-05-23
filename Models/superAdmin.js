@@ -9,19 +9,13 @@ const superAdminSchema = new mongoose.Schema({
   schoolId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'School',
-  }
+  },
+  role: {
+    type: String,
+    default: 'superAdmin',
+  },
 });
 
-// superAdminSchema.pre('save', async function(next) {
-//   if (this.isModified('password')) {
-//     this.password = encrypt(this.password);
-//   }
-//   next();
-// });
-// superAdminSchema.methods.comparePassword = function(candidatePassword) {
-//   const decryptedPassword = decrypt(this.password);
-//   return candidatePassword === decryptedPassword;
-// };
 
 
-export default dbConnections.db1.model('superAdmin', superAdminSchema);
+export default dbConnections.db2.model('superAdmin', superAdminSchema);

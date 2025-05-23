@@ -1,8 +1,8 @@
-import {School} from "../../Models/school.js";
-import BranchGroup from "../../Models/branchGroup.js";
-import Branch from "../../Models/branch.js";
-import Parents from "../../Models/parents.js";
-import Superadmin from "../../Models/superAdmin.js";
+import {School} from "../Models/school.js";
+import BranchGroup from "../Models/branchGroup.js";
+import Branch from "../Models/branch.js";
+import Parents from "../Models/parents.js";
+import Superadmin from "../Models/superAdmin.js";
 
 
 const findSameUsername = async (username) => {

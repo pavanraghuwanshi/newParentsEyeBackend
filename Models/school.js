@@ -29,20 +29,12 @@ const schoolSchema = new mongoose.Schema({
     type:Boolean,
     default:false
   },
+  role: {
+    type: String,
+    default: "school"
+  },
   branches: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Branch' }]
 });
-
-// schoolSchema.pre('save', async function(next) {
-//   if (this.isModified('password')) {
-//     this.password = encrypt(this.password);
-//   }
-//   next();
-// });
-
-// schoolSchema.methods.comparePassword = function(candidatePassword) {
-//   const decryptedPassword = decrypt(this.password);
-//   return candidatePassword === decryptedPassword;
-// };
 
 
 export const School = dbConnections.db2.model("School", schoolSchema);

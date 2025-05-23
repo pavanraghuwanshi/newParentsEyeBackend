@@ -1,13 +1,17 @@
 import express from 'express';
 
-import { addSchool } from '../Controllers/School.Controller.js';
+import { addSchool, getSchools, updateSchool,deleteSchool } from '../Controllers/School.Controller.js';
+import authenticateUser from '../middleware/authMiddleware.js';
 
 
 const router = express.Router();
 
 
 
-router.post('/school', addSchool);
+router.post('/school',authenticateUser, addSchool);
+router.get('/school',authenticateUser, getSchools);
+router.put('/school/:id',authenticateUser, updateSchool);
+router.delete('/school/:id',authenticateUser, deleteSchool);
 
 
 
