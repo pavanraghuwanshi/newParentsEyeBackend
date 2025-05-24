@@ -9,6 +9,7 @@ import reportRoute from "./Routes/reports.route.js";
 import schoolRoute from "./Routes/school.route.js";
 import userRoute from "./Routes/userlogin.route.js";
 import branchRoute from "./Routes/branch.route.js";
+import branchGroupRoute from "./Routes/branchGroup.route.js";
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -40,6 +41,7 @@ app.use("/history", historyRoute)
 app.use("/reports", reportRoute)
 app.use("/api", schoolRoute);
 app.use("/api", branchRoute);
+app.use("/api", branchGroupRoute);
 app.use("/auth", userRoute);
 
 // const io = setupSocket(server);

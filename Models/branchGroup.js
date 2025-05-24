@@ -1,9 +1,8 @@
 import mongoose from 'mongoose';
-// const { encrypt, decrypt } = require('./cryptoUtils'); 
 import  {dbConnections}  from "../Database/db.js"; 
 
 const branchSchema = new mongoose.Schema({
-  branchName: {
+  branchGroupName: {
     type: String,
     required: true
   },
@@ -12,11 +11,11 @@ const branchSchema = new mongoose.Schema({
     ref: 'School',
     required: true
   },
-  AssignedBranch:{
+  AssignedBranch:[{
      type:mongoose.Schema.Types.ObjectId,
      ref:'Branch'
-  },
- schoolMobile:{
+  }],
+ phoneNo:{
     type: String,
    default: ''
   },
@@ -36,25 +35,4 @@ const branchSchema = new mongoose.Schema({
 });
 
 
-// branchSchema.pre('save', async function(next) {
-//   if (this.isModified('password')) {
-//     this.password = encrypt(this.password);
-//   }
-//   next();
-// });
-
-// branchSchema.methods.comparePassword = function(candidatePassword) {
-//   const decryptedPassword = decrypt(this.password);
-//   return candidatePassword === decryptedPassword;
-// };
-// // Middleware to handle password encryption on `findOneAndUpdate`
-// branchSchema.pre('findOneAndUpdate', async function(next) {
-//   const update = this.getUpdate();
-//   if (update && update.password) {
-//     update.password = encrypt(update.password);
-//   }
-//   next();
-// });
-
-
-export default dbConnections.db1.model('BranchGroup', branchSchema);
+export default dbConnections.db2.model('BranchGroup', branchSchema);
