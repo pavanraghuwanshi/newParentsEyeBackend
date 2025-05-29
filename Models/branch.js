@@ -28,6 +28,9 @@ const branchSchema = new mongoose.Schema({
     type: String,
     default: ''
   },
+  role: {
+    type: String,  default: 'branch'
+  },
   devices: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Device' }]
 });
 

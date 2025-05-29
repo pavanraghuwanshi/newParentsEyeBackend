@@ -1,7 +1,7 @@
-import {School} from "../Models/school.js";
+import School from "../Models/school.js";
 import BranchGroup from "../Models/branchGroup.js";
 import Branch from "../Models/branch.js";
-import Parents from "../Models/parents.js";
+import Parent from "../Models/parents.js";
 import Superadmin from "../Models/superAdmin.js";
 
 
@@ -14,7 +14,7 @@ const findSameUsername = async (username) => {
       School.findOne({ username }).lean(),
       BranchGroup.findOne({ username }).lean(),
       Branch.findOne({ username }).lean(),
-      Parents.findOne({ username }).lean(),
+      Parent.findOne({ username }).lean(),
     ];
 
     const results = await Promise.all(queries);

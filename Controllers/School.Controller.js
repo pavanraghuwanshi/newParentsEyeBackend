@@ -1,4 +1,4 @@
-import {School} from "../Models/school.js";
+import School from "../Models/school.js";
 import findSameUsername from "../Utils/findSameUsername.js";
 import { decrypt, encrypt, comparePassword } from "../Utils/crypto.js";
 

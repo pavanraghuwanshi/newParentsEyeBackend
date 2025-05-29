@@ -1,7 +1,8 @@
 import jwt from 'jsonwebtoken';
 import  Superadmin  from '../Models/superAdmin.js';
-import  {School}  from '../Models/school.js';
+import  School  from '../Models/school.js';
 import Branch from '../Models/branch.js';
+import BranchGroup from '../Models/branchGroup.js';
 import mongoose from 'mongoose';
 
 const authenticateUser = async (req, res, next) => {
@@ -37,6 +38,12 @@ const authenticateUser = async (req, res, next) => {
         if (user) {
             req.user = user;
             req.userType = 'School';
+            return next();
+        }
+        user = await BranchGroup.findById(decoded.id);
+        if (user) {
+            req.user = user;
+            req.userType = 'BranchGroup';
             return next();
         }
 

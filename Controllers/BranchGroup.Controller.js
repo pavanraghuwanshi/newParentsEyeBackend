@@ -1,5 +1,5 @@
 import BranchGroup from "../Models/branchGroup.js";
-import { School } from "../Models/school.js";
+import  School  from "../Models/school.js";
 import { decrypt, encrypt } from "../Utils/crypto.js";
 import findSameUsername from "../Utils/findSameUsername.js";
 

@@ -1,5 +1,5 @@
 import Superadmin from "../Models/superAdmin.js";
-import {School} from "../Models/school.js";
+import School from "../Models/school.js";
 import BranchGroup from "../Models/branchGroup.js";
 import Branch from "../Models/branch.js";
 import Parents from "../Models/parents.js";
@@ -43,8 +43,8 @@ export const loginUser = async (req, res) => {
        // Find user in various collections
        user = await Superadmin.findOne({ username }).lean();
        if (!user) user = await School.findOne({ username });
-       if (!user) user = await Branch.findOne({ username }).populate("hotelId", "username");
-       if (!user) user = await BranchGroup.findOne({ username }).populate("assignedBranchsId", "username");
+       if (!user) user = await Branch.findOne({ username }).populate("schoolId", "username");
+       if (!user) user = await BranchGroup.findOne({ username }).populate("AssignedBranch", "username");
        if (!user) user = await Parents.findOne({ username }).populate( "username");
    
        if (!user) {
@@ -63,7 +63,7 @@ export const loginUser = async (req, res) => {
            id: user._id,
            username: user.username,
             role: user.role,
-            assingedBranchsId: user?.assignedBranchsId,
+            AssignedBranch: user?.AssignedBranch,
          },
          process.env.JWT_SECRET,
        );

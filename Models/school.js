@@ -37,4 +37,4 @@ const schoolSchema = new mongoose.Schema({
 });
 
 
-export const School = dbConnections.db2.model("School", schoolSchema);
+export default dbConnections.db2.model("School", schoolSchema);

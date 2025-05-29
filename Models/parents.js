@@ -1,10 +1,11 @@
 import mongoose from 'mongoose';
 // const { encrypt, decrypt } = require('./cryptoUtils'); 
 import  {dbConnections}  from "../Database/db.js"; 
+import branch from './branch.js';
 
 // Define the schema for the School model
 const ParentSchema = new mongoose.Schema({
-  schoolName: {
+  parentName: {
     type: String,
     required: true
   },
@@ -29,20 +30,19 @@ const ParentSchema = new mongoose.Schema({
     type:Boolean,
     default:false
   },
+  schoolId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'School',
+    required: true
+  },
+  branchId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Branch',
+    required: true
+  },
   branches: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Branch' }]
 });
 
-// schoolSchema.pre('save', async function(next) {
-//   if (this.isModified('password')) {
-//     this.password = encrypt(this.password);
-//   }
-//   next();
-// });
-
-// schoolSchema.methods.comparePassword = function(candidatePassword) {
-//   const decryptedPassword = decrypt(this.password);
-//   return candidatePassword === decryptedPassword;
-// };
 
 
-export default dbConnections.db1.model('Parent', ParentSchema);
+export default dbConnections.db2.model('Parent', ParentSchema);
