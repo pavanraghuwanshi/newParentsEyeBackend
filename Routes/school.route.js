@@ -1,7 +1,7 @@
 import express from 'express';
 
 import { addSchool, getSchools, updateSchool,deleteSchool } from '../Controllers/School.Controller.js';
-import authenticateUser from '../middleware/authMiddleware.js';
+import authenticateUser from '../Middleware/authMiddleware.js';
 
 
 const router = express.Router();

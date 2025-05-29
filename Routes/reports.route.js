@@ -1,7 +1,7 @@
 import express from 'express';
 const router = express.Router();
 import { getStatusReport, getCustomReport, getSummaryReport, distanceReport, getIdleReports, vehiclelog, getGeofenceReport, dayReport, geofenceReportsByTimeRange, travelSummaryReport, tripSummaryReport, } from '../Controllers/Reports.Controller.js';
-import authenticateUser from '../middleware/authMiddleware.js';
+import authenticateUser from '../Middleware/authMiddleware.js';
 
 router.get('/status', authenticateUser, getStatusReport);
 router.get('/custom', authenticateUser, getCustomReport);

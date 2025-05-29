@@ -1,6 +1,6 @@
 import express from 'express';
 import { addBranchGroup, deleteBranchGroup, getBranchGroups, updateBranchGroup } from '../Controllers/BranchGroup.Controller.js';
-import authenticateUser from '../middleware/authMiddleware.js';
+import authenticateUser from '../Middleware/authMiddleware.js';
 
 
 const router = express.Router();
