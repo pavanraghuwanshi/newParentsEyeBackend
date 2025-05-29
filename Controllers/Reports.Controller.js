@@ -1,7 +1,7 @@
 import { Device } from "../Models/device.model.js";
 import { History } from "../Models/history.model.js";
 import moment from "moment";
-import { VehicleChange } from "../models/vehicleLogReports.model.js";
+import { VehicleChange } from "../Models/vehicleLogReports.model.js";
 // import Alert from "../models/alert.model.js";
 
 export const getStatusReport = async (req, res) => {
