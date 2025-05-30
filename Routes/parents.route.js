@@ -7,6 +7,6 @@ const router = express.Router();
 router.post('/parent',authenticateUser,addParent);
 router.get('/parent',authenticateUser,getParents);
 router.put('/parent/:id',authenticateUser,updateParent);
-router.delete('/parent/:id',authenticateUser,deleteParent);
+router.delete('/parent/:ids',authenticateUser,deleteParent);
 
 export default router;

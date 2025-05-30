@@ -1,5 +1,4 @@
 
-import { populate } from 'dotenv';
 import Parent from '../Models/parents.js';
 import School from '../Models/school.js';
 import { encrypt } from '../Utils/crypto.js';
@@ -168,17 +167,53 @@ export const updateParent = async (req, res) => {
   }
 };
 
-
 // Delete parent by ID
 export const deleteParent = async (req, res) => {
-  try {
-    const deletedParent = await Parent.findByIdAndDelete(req.params.id);
 
-    if (!deletedParent) {
-      return res.status(404).json({ message: 'Parent not found' });
+  const { ids } = req.params;
+  const { role } = req.user;  
+  
+   if (!['school', 'superAdmin', 'branchGroup', 'branch', 'parent'].includes(role)) {
+    return res.status(403).json({ message: 'You are not authorized to perform this action.' });
+  }
+
+  try {
+        const arrayOfIds = ids.split(',').map(id => id.trim());
+
+    const deletedParents = await Parent.deleteMany({ _id: { $in: arrayOfIds } });
+
+    if (!deletedParents || deletedParents.deletedCount === 0) {
+      return res.status(404).json({ message: 'Parent not found for delete' });
     }
 
     res.status(200).json({ message: 'Parent deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+export const deleteChild = async (req, res) => {
+  const { ids } = req.params;
+  const { role } = req.user;
+
+  console.log("Requested IDs:", ids);
+
+  if (!['school', 'superAdmin', 'branchGroup', 'branch'].includes(role)) {
+    return res.status(403).json({ message: 'You are not authorized to perform this action.' });
+  }
+
+  try {
+    // Convert comma-separated string to array and validate ObjectIds
+    const arrayOfIds = ids.split(',').map(id => id.trim());
+
+    const deletedChildren = await Child.deleteMany({ _id: { $in: arrayOfIds } });
+
+
+    if (!deletedChildren || deletedChildren.deletedCount === 0) {
+      return res.status(404).json({ message: "Child not found" });
+    }
+
+    res.status(200).json({ message: "Children deleted successfully", deletedCount: deletedChildren.deletedCount });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
