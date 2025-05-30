@@ -111,8 +111,11 @@ export const getParents = async (req, res) => {
 
 // Update parent by ID
 export const updateParent = async (req, res) => {
+
   const { role } = req.user;
   const { id } = req.params;
+
+
   const {parentName,
     username,
     password,

@@ -3,6 +3,7 @@ import BranchGroup from "../Models/branchGroup.js";
 import Branch from "../Models/branch.js";
 import Parent from "../Models/parents.js";
 import Superadmin from "../Models/superAdmin.js";
+import Child from "../Models/child.js";
 
 
 const findSameUsername = async (username) => {
@@ -15,6 +16,7 @@ const findSameUsername = async (username) => {
       BranchGroup.findOne({ username }).lean(),
       Branch.findOne({ username }).lean(),
       Parent.findOne({ username }).lean(),
+      Child.findOne({ username }).lean(),
     ];
 
     const results = await Promise.all(queries);

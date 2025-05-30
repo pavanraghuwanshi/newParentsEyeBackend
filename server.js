@@ -11,6 +11,7 @@ import userRoute from "./Routes/userlogin.route.js";
 import branchRoute from "./Routes/branch.route.js";
 import branchGroupRoute from "./Routes/branchGroup.route.js";
 import parentsRoute from "./Routes/parents.route.js";
+import childRoute from "./Routes/child.route.js";
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -44,6 +45,7 @@ app.use("/api", schoolRoute);
 app.use("/api", branchRoute);
 app.use("/api", branchGroupRoute);
 app.use("/api", parentsRoute);
+app.use("/api", childRoute);
 app.use("/auth", userRoute);
 
 // const io = setupSocket(server);
